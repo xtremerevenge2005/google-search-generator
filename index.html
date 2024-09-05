@@ -1,0 +1,199 @@
+<!-- Estrutura HTML da Página-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADVANCED SEARCH FOR GOOGLE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div class="toggle-container">
+        <label class="switch">
+            <input type="checkbox" id="modeToggle" onclick="toggleMode()">
+            <span class="slider"></span>
+        </label>
+        <span id="modeLabel">Modo Claro</span>
+    </div>
+
+    
+    <div class="main-container">
+        
+            <div id="placeholder-dialog" class="placeholder-dialog hidden"></div>
+
+        <div class="container">
+            <h1>ADVANCED SEARCH FOR GOOGLE - PESQUISA AVANÇADA PARA GOOGLE</h1>
+
+                     <div class="input-group">
+                <label for="commonInput">Entrada Comum:</label>
+                <input type="text" id="commonInput" placeholder="Entre um termo para busca comum...">
+                <button onclick="commitInput('common')">Submeter</button>
+                <div id="commonSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="excludeInput">Excluir Termos:</label>
+                <input type="text" id="excludeInput" placeholder="Enter um termo para exclusão da busca...">
+                <button onclick="commitInput('exclude')">Submeter</button>
+                <div id="excludeSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+              <div class="input-group">
+                <label for="intextInput">Encontrar no texto:</label>
+                <input type="text" id="intextInput" placeholder="Entre um termo para busca exata em páginas da web...">
+                <button onclick="commitInput('intext')">Submeter</button>
+                <div id="intextSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="allintextInput">Encontrar no texto (múltiplos termos):</label>
+                <input type="text" id="allintextInput" placeholder="Entre termos para busca exata em páginas da web...">
+                <button onclick="commitInput('allintext')">Submeter</button>
+                <div id="allintextSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="filetypeInput">Restringir busca a tipo de arquivo:</label>
+                <input type="text" id="filetypeInput" placeholder="Entre um tipo de arquivo (ex: pdf, txt)...">
+                <button onclick="commitInput('filetype')">Submeter</button>
+                <div id="filetypeSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="siteInput">Restringir busca a site:</label>
+                <input type="text" id="siteInput" placeholder="Entre a URL de um site (ex: exemplo.com)...">
+                <button onclick="commitInput('site')">Submeter</button>
+                <div id="siteSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="afterInput">Busca depois da data (formato YYYY-MM-DD):</label>
+                <input type="text" id="afterInput" placeholder="Entre uma data no formato especificado...">
+                <button onclick="commitInput('after')">Submeter</button>
+                <div id="afterSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="beforeInput">Busca antes da data (formato YYYY-MM-DD):</label>
+                <input type="text" id="beforeInput" placeholder="Entre uma data no formato especificado...">
+                <button onclick="commitInput('before')">Submeter</button>
+                <div id="beforeSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="intitleInput">Encontrar no título da página:</label>
+                <input type="text" id="intitleInput" placeholder="Entre um termo para busca exata em títulos de páginas da web...">
+                <button onclick="commitInput('intitle')">Submeter</button>
+                <div id="intitleSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="allintitleInput">Encontrar no título da página (múltiplos termos):</label>
+                <input type="text" id="allintitleInput" placeholder="Entre termos para busca exata em títulos de páginas da web...">
+                <button onclick="commitInput('allintitle')">Submeter</button>
+                <div id="allintitleSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="inurlInput">Encontrar na URL:</label>
+                <input type="text" id="inurlInput" placeholder="Entre um termo para busca na URL de páginas da web...">
+                <button onclick="commitInput('inurl')">Submeter</button>
+                <div id="inurlSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="allinurlInput">Encontrar na URL (múltiplos termos):</label>
+                <input type="text" id="allinurlInput" placeholder="Entre termos para busca na URL de páginas da web...">
+                <button onclick="commitInput('allinurl')">Submeter</button>
+                <div id="allinurlSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="extInput">Busca restrita a extensão:</label>
+                <input type="text" id="extInput" placeholder="Entre um tipo de extensão (ex: php, jsp)...">
+                <button onclick="commitInput('ext')">Submeter</button>
+                <div id="extSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="relatedInput">Busca relacionada a termo:</label>
+                <input type="text" id="relatedInput" placeholder="Entre um termo para busca relacionada ao mesmo...">
+                <button onclick="commitInput('related')">Submeter</button>
+                <div id="relatedSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="cacheInput">Exibir versão cache de página:</label>
+                <input type="text" id="cacheInput" placeholder="entre a URL de uma página para exibir sua versão de cache...">
+                <button onclick="commitInput('cache')">Submeter</button>
+                <div id="cacheSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="infoInput">Exibir informações sobre página:</label>
+                <input type="text" id="infoInput" placeholder="Entre a URL de uma página para exibir informações...">
+                <button onclick="commitInput('info')">Submeter</button>
+                <div id="infoSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="linkInput">Exibir páginas ligadas a uma página:</label>
+                <input type="text" id="linkInput" placeholder="Entre a URL de uma página para exibir correlatas...">
+                <button onclick="commitInput('link')">Submeter</button>
+                <div id="linkSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="defineInput">Encontrar a definição de termo:</label>
+                <input type="text" id="defineInput" placeholder="Entre um termo para obter suas definições...">
+                <button onclick="commitInput('define')">Submeter</button>
+                <div id="defineSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="inanchorInput">Encontrar termo em links internos de páginas (âncoras):</label>
+                <input type="text" id="inanchorInput" placeholder="Entre termo para buscá-lo em âncoras de páginas da web...">
+                <button onclick="commitInput('inanchor')">Submeter</button>
+                <div id="inanchorSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="allinanchorInput">Encontrar termos em links internos de páginas (âncoras):</label>
+                <input type="text" id="allinanchorInput" placeholder="Entre termos para buscá-los em âncoras de páginas da web...">
+                <button onclick="commitInput('allinanchor')">Submeter</button>
+                <div id="allinanchorSelections" class="selections" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+
+            <button onclick="commitAll()">Submeter Tudo</button>
+
+            <div id="finalSelections" class="final-selections" ondrop="drop(event)" ondragover="allowDrop(event)" tabindex="0">
+
+            </div>
+
+            <button onclick="generateDork()">Gerar Texto de Busca</button>
+            <button onclick="clearQuery()">Limpar Resultado</button>
+
+            <div id="output" class="output-box"></div>
+            <button id="copyButton" onclick="copyToClipboard()">Copiar Texto</button>
+        </div>
+
+        <div class="instructions-box">
+            <h2>INSTRUÇÕES:</h2>
+            <p>1. Digite os termos desejados nos campos necessários.</p>
+            <p>2. Clique em "Submeter" para adicionar os termos à caixa de seleção do campo escolhido.</p>
+            <p>3. Clique no <b>X</b> para excluir entradas. Para modificar a ordem dos termos, utilize o clique direito do mouse (ou clique na tela) e segure-os para arrastá-los à direita ou à esquerda. Exemplo: Em (1,2,3,4,5), se 5 é arrastado sobre dois, obtém-se (1,2,5,3,4). Posteriormente, se 1 é arrastado sobre 3, tem-se (2,5,3,1,4). Arrastando um termo à esquerda da primeira palavra, o termo ocupará à última posição. É também possivel clicar em um termo a cada movimento, que poderá ser ordenado pelas setas direita e/ou esquerda do teclado.</p>
+            <p>4. Clique em "Submeter Tudo" para enviar as entradas ao campo final de caixas de seleção, onde os termos ainda podem ser reordenados.</p>
+            <p>5. Clique em "Gerar Texto de Busca" para obter a saída para a busca no Google.</p>
+            <p>6. Clique em "Copiar Texto" para copiar a saída gerada.</p>
+            <p>7. Clique em "Limpar Resultado" para reiniciar a plataforma.</p>
+            <p>8. Para gerar saídas mais avançadas de busca, que utilizam, por exemplo, operadores lógicos e matemáticos, é possível combinar o uso do campo <b>Entrada Comum</b> com os demais ou apenas este.</p>
+            <p>9. Se necessário, digite o texto entre aspas (<b>""</b>) para reforçar que seus termos devem se encontrar exatamente como foram escritos nos resultados das buscas.</p>
+            <p>10. Acesse uma lista contendo vários operadores de busca avançada do Google <a href="https://www.spyfu.com/blog/google-search-operators/"><b>aqui</b>.</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
